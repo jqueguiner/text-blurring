@@ -111,7 +111,7 @@ if __name__ == '__main__':
         os.makedirs(upload_directory)
 
     model_name = "frozen_east_text_detection.pb"
-    model_url = "https://storage.gra5.cloud.ovh.net/v1/AUTH_18b62333a540498882ff446ab602528b/pretrained-models/" + model_name
+    model_url = "https://storage.gra5.cloud.ovh.net/v1/AUTH_18b62333a540498882ff446ab602528b/pretrained-models/image/text-blurring/v0/" + model_name
 
     get_model_bin(model_url , model_name)
 
