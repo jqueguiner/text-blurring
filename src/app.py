@@ -71,7 +71,6 @@ def process():
 
     try:
         url = request.json["url"]
-        strength = request.json["strength"]
    
         download(url, input_path)
 
@@ -83,7 +82,7 @@ def process():
             height=320, 
             min_confidence=0.5, 
             blur=True, 
-            strength=strength,
+            strength=25,
             sigma=30,
             bounding_box=False
         )
