@@ -83,7 +83,7 @@ def process():
             height=320, 
             min_confidence=0.5, 
             blur=True, 
-            strength=25,
+            strength=strength,
             sigma=30,
             bounding_box=False
         )

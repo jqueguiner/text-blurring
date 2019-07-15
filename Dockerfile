@@ -1,18 +1,4 @@
-FROM ubuntu:18.04
-
-ENV DEBIAN_FRONTEND=noninteractive
-
-RUN apt-get update --fix-missing 
-
-RUN apt-get install wget python3 python3-pip -y
-
-RUN apt-get install build-essential cmake pkg-config libx11-dev libatlas-base-dev libgtk-3-dev libboost-python-dev -y
-
-RUN apt-get install -y tzdata
-
-RUN dpkg-reconfigure --frontend noninteractive tzdata
-
-RUN apt-get install python-opencv -y
+FROM guignol95/ai_apis:latest
 
 ADD src /src
 
