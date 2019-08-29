@@ -20,6 +20,7 @@ from text_detection import detect_text
 import traceback
 import cv2
 
+
 try:  # Python 3.5+
     from http import HTTPStatus
 except ImportError:
@@ -71,7 +72,7 @@ def process():
 
     try:
         url = request.json["url"]
-   
+
         download(url, input_path)
 
         detect_text(
@@ -82,7 +83,7 @@ def process():
             height=320, 
             min_confidence=0.5, 
             blur=True, 
-            strength=25,
+            strength=35,
             sigma=30,
             bounding_box=False
         )
