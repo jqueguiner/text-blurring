@@ -33,6 +33,10 @@ except ImportError:
 app = Flask(__name__)
 
 
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
 def get_model_bin(url, output_path):
     if not os.path.exists(output_path):
         cmd = "wget -O %s %s" % (output_path, url)
@@ -71,9 +75,14 @@ def process():
     output_path = generate_random_filename("jpg")
 
     try:
-        url = request.json["url"]
-
-        download(url, input_path)
+        if 'file' in request.files:
+            file = request.files['file']
+            if allowed_file(file.filename):
+                file.save(input_path)
+            
+        else:
+            url = request.json["url"]
+            download(url, input_path)
 
         detect_text(
             input_path=input_path, 
@@ -104,6 +113,8 @@ def process():
 
 if __name__ == '__main__':
     global upload_directory, model, net
+    global ALLOWED_EXTENSIONS
+    ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
     
     upload_directory = 'upload'
 
